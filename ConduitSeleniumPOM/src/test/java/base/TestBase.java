@@ -7,7 +7,7 @@ import java.time.Duration;
 
 public class TestBase {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
     public void launchBrowser() {
 

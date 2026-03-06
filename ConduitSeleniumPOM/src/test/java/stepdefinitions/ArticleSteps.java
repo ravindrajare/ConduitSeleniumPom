@@ -14,26 +14,14 @@ public class ArticleSteps extends TestBase {
     NewArticlePage newArticlePage;
     ArticleDetailsPage articleDetailsPage;
 
-    String dynamicTitle;   // store generated title
+    String dynamicTitle;
 
-    @Given("user launches browser")
-    public void launch_browser() {
-
-        launchBrowser();
-    }
-
-    @Given("user opens conduit login page")
-    public void open_login_page() {
-
-        openUrl("https://conduit-realworld-example-app.fly.dev/#/login");
+    @When("user logs in with valid credentials")
+    public void login_user() {
 
         loginPage = new LoginPage(driver);
         newArticlePage = new NewArticlePage(driver);
         articleDetailsPage = new ArticleDetailsPage(driver);
-    }
-
-    @When("user logs in with valid credentials")
-    public void login_user() {
 
         loginPage.login("ravindra123@gmail.com","Test@123");
     }
@@ -41,9 +29,7 @@ public class ArticleSteps extends TestBase {
     @When("user creates article {string} {string} {string}")
     public void create_article(String title,String description,String body) {
 
-        // create unique title every run
         dynamicTitle = title + System.currentTimeMillis();
-
         newArticlePage.createArticle(dynamicTitle,description,body);
     }
 
@@ -57,7 +43,6 @@ public class ArticleSteps extends TestBase {
     public void update_article(DataTable table) {
 
         List<Map<String,String>> data = table.asMaps();
-
         String body = data.get(0).get("body");
 
         articleDetailsPage.updateArticle(body);
@@ -79,7 +64,5 @@ public class ArticleSteps extends TestBase {
     public void verify_delete() {
 
         System.out.println("Article Deleted");
-
-        quitBrowser();
     }
 }
