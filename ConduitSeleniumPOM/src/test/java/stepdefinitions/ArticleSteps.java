@@ -1,4 +1,5 @@
 package stepdefinitions;
+import org.testng.Assert;
 
 import base.TestBase;
 import io.cucumber.java.en.*;
@@ -15,6 +16,38 @@ public class ArticleSteps extends TestBase {
     ArticleDetailsPage articleDetailsPage;
 
     String dynamicTitle;
+
+//    
+//    @Then("article should be created successfully")
+//    public void verify_create() {
+//
+//        Assert.assertTrue(driver.getCurrentUrl().contains("#/article/"),
+//                "Article page not opened after creation!");
+//
+//        Assert.assertTrue(driver.getPageSource().contains(dynamicTitle),
+//                "Created article title not found!");
+//
+//        System.out.println("Article Created : " + dynamicTitle);
+//    }
+//
+//    @When("user updates article using datatable")
+//    public void update_article(DataTable table) {
+//
+//        List<Map<String,String>> data = table.asMaps();
+//        updatedBody = data.get(0).get("body");
+//
+//        articleDetailsPage.updateArticle(updatedBody);
+//    }
+//
+//   
+//    @Then("article should be updated successfully")
+//    public void verify_update() {
+//
+//        Assert.assertTrue(driver.getPageSource().contains(updatedBody),
+//                "Updated article body not visible!");
+//
+//        System.out.println("Article Updated");
+//    }
 
     @When("user logs in with valid credentials")
     public void login_user() {
